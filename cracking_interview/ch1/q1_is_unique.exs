@@ -19,7 +19,9 @@ defmodule Ch1 do
     unique?(rest, next, next &&& mask)
   end
 
-  @doc "Is unique using sorting"
+  @doc "Is unique using sorting 
+  Split by graphemes instead of codepoints
+  "
   def unique2?(input), do: unique2? Enum.sort(String.graphemes input), ""
 
   defp unique2?([current | _], current), do: false
