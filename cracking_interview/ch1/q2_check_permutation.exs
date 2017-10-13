@@ -1,6 +1,10 @@
 ExUnit.start()
 
 defmodule Ch1 do
+  @moduledoc """
+  Given two string, check if one is permutation of the other
+  """
+
   @doc "Using sorting"
   def permutation?(one, other) when length(one) != length(other), do: False
   def permutation?(one, other) do
@@ -11,9 +15,9 @@ defmodule Ch1 do
   def permutation2?(one, other) when length(one) != length(other), do: False
   def permutation2?(one, other), do: count(one) == count(other)
   
-  def count(string, counter \\ %{})
-  def count("", counter), do: counter
-  def count(<<point::utf8, rest::bitstring>>, counter) do
+  defp count(string, counter \\ %{})
+  defp count("", counter), do: counter
+  defp count(<<point::utf8, rest::bitstring>>, counter) do
     counter = elem(Map.get_and_update(counter, point, fn
       nil -> {nil, 1}
       value -> {value, value + 1}
