@@ -1,6 +1,8 @@
 {
     "python.pythonPath": "${workspaceRoot}/env/bin/python3.6",
     "files.exclude": {
-        "env/": true
+        "env/": true,
+        "node_modules/": true,
+        "**/__pycache__/": true
     }
 }

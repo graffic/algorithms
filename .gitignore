@@ -2,6 +2,9 @@ env/
 __pycache__
 *.pyc
 
+# Nodejs
+node_modules
+
 # vim
 # Swap
 [._]*.s[a-v][a-z]
