@@ -7,6 +7,9 @@
   "author": "Javier Gonel <bolibic@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "doctests": "doctest"
+  },
   "devDependencies": {
     "doctest": "^0.13.0",
     "eslint": "^4.17.0"
