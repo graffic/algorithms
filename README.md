@@ -8,8 +8,12 @@ I tend to forget specific algo tricks after 2 months. I hope this repo helps to 
 * [Project euler](https://projecteuler.net/archives) - [📂 `euler`](euler)
 * [Introduction to algorithms](https://mitpress.mit.edu/books/introduction-algorithms) - [📂 `intro_algorithms`](intro_algorithms)
 * [Leetcode](https://leetcode.com/problemset/all/) - [📂 `leetcode`](leetcode)
-* [The Algorithm Design Manual]() - [📂 `algo_design`](algo_design)
+* [The Algorithm Design Manual](http://www.algorist.com) - [📂 `algo_design`](algo_design)
 * Miscellaneous [📂 `misc`](misc)
+
+## Elixir
+
+All files are scripts `.exs`. Run the tests with `elixir path/to/file`
 
 ## Python
 
