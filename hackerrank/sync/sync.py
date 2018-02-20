@@ -1,3 +1,6 @@
+"""
+Sync HackerRank sumbissions with the filesystem.
+"""
 import requests
 import os
 
