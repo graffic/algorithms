@@ -26,6 +26,24 @@ def create_api():
     return HackerRankAPI(session)
 
 
+def paginate(request, per_page=1000):
+    """
+    Paginate an API call
+    
+    It should use offset and limit and return {"total": x, "models":[...]}
+    """
+    offset = 0
+    while True:
+        res = request({"offset": offset, "limit": per_page})
+        total = res["total"]
+        models = res["models"]
+
+        yield from models
+        if offset + len(models) >= total:
+            break
+        offset += len(models)
+
+
 class HackerRankAPI:
     def __init__(self, session):
         self.__session = session
@@ -39,22 +57,22 @@ class HackerRankAPI:
         if "status" not in login_res or not login_res["status"] :
             raise Exception(", ".join(login_res['errors']))
 
-       
     def submissions(self):
-        current = {"offset": 0, "limit": 3}
-        while True:
-            res = self.__session.get(SUBMISSIONS, params=current).json()
-            yield from res['models']
-            if current["offset"] + len(res["models"]) >= res["total"]:
-                break
-            current["offset"] += len(res["models"])
+        for s in paginate(lambda p: self.__get(SUBMISSIONS, params=p)):
+            yield self.submission(s["id"])
 
     def submission(self, submission_id):
-        return self.__session.get(f"{SUBMISSIONS}{submission_id}").json()["model"]
+        return self.__get(f"{SUBMISSIONS}{submission_id}")["model"]
+    
+    def __get(self, url, **kwargs):
+        "Wraps a session get request returning json"
+        return self.__session.get(url, **kwargs).json()
 
 
 def to_file(submission):
-    base = os.path.join("..", submission["track"]["slug"])
+    "Dumps a sumbission into a file"
+    track = submission["track"]
+    base = os.path.join("..", track["track_slug"], track["slug"])
     filename = submission["slug"] + EXTENSIONS.get(submission["language"], "unknown")
     full = os.path.join(base, filename)
     if not os.path.exists(base):
@@ -65,6 +83,7 @@ def to_file(submission):
 
 
 def cli():
+    "Command line script"
     login = os.environ.get("LOGIN")
     password = os.environ.get("PASSWORD")
 
@@ -72,8 +91,9 @@ def cli():
     api.login(login, password)
 
     for submission in api.submissions():
-        to_file(api.submission(submission["id"]))
-    
+        to_file(submission)
+
+
 if __name__ == "__main__":
     cli()
 
