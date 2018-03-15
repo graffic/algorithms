@@ -1,3 +1,6 @@
+i = 4
+d = 4.0
+s = 'HackerRank '
 
 # Declare second integer, double, and String variables.
 
@@ -12,3 +15,4 @@ print(d + sum_with_d)
 # Concatenate and print the String variables on a new line
 # The 's' variable above should be printed first.
 print(s + postfix)
+
