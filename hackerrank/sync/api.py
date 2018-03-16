@@ -10,22 +10,6 @@ SESSION_COOKIE = "_hrank_session"
 CSRF_MARKER = "csrf-token\" content=\""
 
 
-def get_csrf(page: str) -> str:
-    "Find the CSRF token in the login page"
-    index = page.find(CSRF_MARKER)
-    start = index + len(CSRF_MARKER)
-    end = page[start:].find("\"")
-    return page[start:start + end]
-
-
-def create_api():
-    "Build a Hackerrank API object"
-    session = requests.Session()
-    response = session.get(BASE_URL)
-    session.headers.update({"X-CSRF-Token": get_csrf(response.text)})
-    return HackerRankAPI(session)
-
-
 def paginate(request, per_page=100):
     """
     Paginate an API call
@@ -52,11 +36,16 @@ class Challenge:
     def __init__(self, model: dict):
         self.__model = model
     
-    def render(self, submission: Submission) -> str:
-        lang = submission.language
-        head = self.__model.get(f"{lang}_template_head", "")
-        tail = self.__model.get(f"{lang}_template_tail", "")
-        return "\n".join((head, submission.code, tail))
+    def render(self, language: str, code: str) -> str:
+        elements = []
+        head = self.__model.get(f"{language}_template_head")
+        tail = self.__model.get(f"{language}_template_tail")
+
+        elements.append(head) if head else None
+        elements.append(code)
+        elements.append(tail) if tail else None
+
+        return "\n".join(elements)
 
 
 def create_submission(submission: dict) -> Submission:
@@ -96,3 +85,18 @@ class HackerRankAPI:
     def __get(self, url: str, **kwargs):
         "Wraps a session get request returning json"
         return self.__session.get(url, **kwargs).json()
+
+def get_csrf(page: str) -> str:
+    "Find the CSRF token in the login page"
+    index = page.find(CSRF_MARKER)
+    start = index + len(CSRF_MARKER)
+    end = page[start:].find("\"")
+    return page[start:start + end]
+
+
+def create_api() -> HackerRankAPI:
+    "Build a Hackerrank API object"
+    session = requests.Session()
+    response = session.get(BASE_URL)
+    session.headers.update({"X-CSRF-Token": get_csrf(response.text)})
+    return HackerRankAPI(session)

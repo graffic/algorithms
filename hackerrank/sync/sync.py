@@ -83,7 +83,7 @@ def to_file(submission: Submission, challenge: Challenge) -> None:
 
     print(f"Creating {full}")
     with open(full, 'w') as output:
-        output.write(challenge.render(submission))
+        output.write(challenge.render(submission.language, submission.code))
     os.utime(full, (0, int(submission.created_at_epoch)))
 
 

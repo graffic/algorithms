@@ -5,6 +5,9 @@ from api import (
     get_csrf,
     create_api,
     paginate,
+    Submission,
+    Track,
+    Challenge,
     HackerRankAPI)
 import requests
 import responses
@@ -16,6 +19,18 @@ TEST_PAGE = """
 <meta name="csrf-token" content="spam">
 <!-- Typography -->
 """
+TEST_SUBMISSION = {
+    "code": "code",
+    "track": {
+        "track_slug": "track_slug",
+        "slug": "slug"
+    },
+    "slug": "slug",
+    "language": "language",
+    "created_at_epoch": "12345"
+}
+
+
 
 pluck = lambda d, *args: (d[arg] for arg in args)
 
@@ -32,6 +47,17 @@ def test_paginate():
         raise Exception()
     
     assert list(paginate(fake_action, 42)) == ["spam", "spam", "spam", "eggs", "eggs"]
+
+@pytest.mark.parametrize("model,expected", [
+    ({}, "42"),
+    ({"c_template_head": "spam"},"spam\n42"),
+    ({"c_template_tail": "eggs"},"42\neggs"),
+    ({"c_template_head": "spam", "c_template_tail": "eggs"}, "spam\n42\neggs"),
+])
+def test_challenge_render(model, expected):
+    sut = Challenge(model)
+    submission = Submission("42", None, None, "c", None)
+    assert expected == sut.render("c", "42")
 
 @responses.activate
 def test_create_api_right_token_in_headers():
@@ -73,3 +99,32 @@ def test_API_login_error():
 
     with pytest.raises(Exception):
         api.login("spam", "bacon")
+
+@responses.activate
+def test_API_submissions():
+    responses.add(
+        responses.GET,
+        'https://www.hackerrank.com/rest/contests/master/submissions/',
+        json={"models": [{"id": 42}], "total": 1})
+    responses.add(
+        responses.GET,
+        'https://www.hackerrank.com/rest/contests/master/submissions/42',
+        json={"model": TEST_SUBMISSION})
+    session = requests.Session()
+    api = HackerRankAPI(session)
+    result = list(api.submissions())[0]
+    expected = Submission(
+        "code", Track("track_slug", "slug"), "slug", "language", 12345)
+    assert result == expected
+
+@responses.activate
+def test_API_challenge():
+    responses.add(
+        responses.GET,
+        'https://www.hackerrank.com/rest/contests/master/challenges/spam',
+        json={"model": {"c_template_head": "42"}}
+    )
+    session = requests.Session()
+    api = HackerRankAPI(session)
+    challenge = api.challenge("spam")
+    assert challenge.render("c", "code") == "42\ncode"
