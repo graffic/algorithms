@@ -1,4 +1,3 @@
-
 defmodule Solution do
   defp sum(a, b), do: a + b
 
@@ -10,4 +9,3 @@ defmodule Solution do
 end
 
 Solution.main()
-

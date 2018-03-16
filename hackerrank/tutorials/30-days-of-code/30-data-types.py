@@ -15,4 +15,3 @@ print(d + sum_with_d)
 # Concatenate and print the String variables on a new line
 # The 's' variable above should be printed first.
 print(s + postfix)
-

@@ -1,4 +1,3 @@
-
 def test_cases():
     amount = int(input())
     while amount > 0:

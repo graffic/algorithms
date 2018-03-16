@@ -1,4 +1,3 @@
-
 #!/bin/python3
 
 import sys
@@ -30,4 +29,3 @@ if __name__ == "__main__":
         p, v = input().strip().split(' ')
         p, v = [str(p), str(v)]
         virusIndices(p, v)
-

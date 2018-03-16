@@ -1,4 +1,3 @@
-
 defmodule Solution do
   def main() do
     a = read_int()

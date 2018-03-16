@@ -1,4 +1,3 @@
-
 #!/bin/python3
 
 import sys
@@ -10,4 +9,3 @@ try:
     print(int(S))
 except:
     print("Bad String")
-

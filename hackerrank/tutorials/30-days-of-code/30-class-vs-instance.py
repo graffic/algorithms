@@ -1,4 +1,3 @@
-
 class Person:
     def __init__(self,initialAge):
         self.__age = initialAge

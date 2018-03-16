@@ -1,4 +1,3 @@
-
 #!/bin/python3
 
 import sys
@@ -20,4 +19,3 @@ if __name__ == "__main__":
        a.append(a_t)
     result = diagonalDifference(a)
     print(result)
-
