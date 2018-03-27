@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.6"
+install:
+ - pip install coveralls pytest pytest-cov
+script: pytest
+after_success:
+  - coveralls
