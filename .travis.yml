@@ -2,6 +2,7 @@ language: python
 python:
   - "3.6"
 install:
+ - pip install -r hackerrank/sync/requirements.txt -r hackerrank/sync/requirements-dev.txt 
  - pip install coveralls pytest pytest-cov
 script: pytest
 after_success:
