@@ -1,4 +1,5 @@
 # Katas
+[![Build Status](https://travis-ci.org/graffic/katas.svg?branch=master)](https://travis-ci.org/graffic/katas)
 
 Training/practice coding exercises from different sites and books.
 
