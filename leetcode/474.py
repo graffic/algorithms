@@ -37,7 +37,6 @@ class Solution(object):
         weights = create_weights(strs)
         for item in strs:
             min_m, min_n = weights[item]
-            for min
 
 
 if __name__ == "__main__":

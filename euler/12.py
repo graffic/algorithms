@@ -1,4 +1,4 @@
-from euler import prime_factorization, primes_limit
+from .euler import prime_factorization, primes_limit
 
 
 def num_divisors(factors):

@@ -1,4 +1,4 @@
-from euler import primes
+from .euler import primes
 from itertools import islice
 
 if __name__ == "__main__":
