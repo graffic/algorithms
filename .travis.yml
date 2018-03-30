@@ -4,6 +4,6 @@ python:
 install:
  - pip install -r hackerrank/sync/requirements.txt -r hackerrank/sync/requirements-dev.txt 
  - pip install coveralls pytest pytest-cov
-script: pytest --cov
+script: pytest --cov=.
 after_success:
   - coveralls
