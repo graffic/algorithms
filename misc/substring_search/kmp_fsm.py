@@ -62,6 +62,10 @@ def search(string, pattern):
     2
     >>> search("abcdefghi", "potato")
     -1
+    >>> search("abcdefghi", "i")
+    8
+    >>> search("abcdefghi", "abc")
+    0
     """
     dfsm = build_dfsm(pattern)
 
@@ -74,8 +78,3 @@ def search(string, pattern):
         if state == len(pattern):
             return index - len(pattern) + 1
     return -1
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

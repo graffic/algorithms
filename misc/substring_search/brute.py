@@ -6,6 +6,10 @@ def search(string, substring):
     2
     >>> search("abcdefghi", "potato")
     -1
+    >>> search("abcdefghi", "i")
+    8
+    >>> search("abcdefghi", "abc")
+    0
     """
     for s in range(len(string)):
         for ss in range(len(substring)):
@@ -14,7 +18,3 @@ def search(string, substring):
         else:
             return s
     return -1
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
