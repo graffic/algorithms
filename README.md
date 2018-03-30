@@ -1,5 +1,6 @@
 # Katas
 [![Build Status](https://travis-ci.org/graffic/katas.svg?branch=master)](https://travis-ci.org/graffic/katas)
+[![Coverage Status](https://coveralls.io/repos/github/graffic/katas/badge.svg?branch=master)](https://coveralls.io/github/graffic/katas?branch=master)
 
 Training/practice coding exercises from different sites and books.
 
