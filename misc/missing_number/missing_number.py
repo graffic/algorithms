@@ -1,5 +1,7 @@
 def find_missing(numbers):
     """
+    We assume that there is always one missing
+    
     >>> find_missing([1,2,3,4,5,6,7,8])
     9
     >>> find_missing([2,3,4,5,6,7,8,9])
