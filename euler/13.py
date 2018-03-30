@@ -1,3 +1,5 @@
+from os.path import dirname, join
+
 def read_numbers(filename):
     with open(filename, 'r') as infile:
         while True:
@@ -7,6 +9,10 @@ def read_numbers(filename):
             yield int(line)
 
 
-if __name__ == "__main__":
-    print(sum(read_numbers('13.numbers')))
+def problem():
+    """
+    >>> problem()
+    5537376230390876637302048746832985971773659831892672
+    """
+    print(sum(read_numbers(join(dirname(__file__), '13.numbers'))))
 

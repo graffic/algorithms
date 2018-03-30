@@ -7,7 +7,11 @@ def is_pal(number):
     return number.endswith(number[:half][::-1])
 
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    906609
+    """
     items = tuple(range(999, 100, -1))
     res = 0
     prev = (0, 0)
@@ -18,4 +22,4 @@ if __name__ == "__main__":
         if is_pal(mult) and mult > res:
             res = mult
             prev = (a, b)
-    print(res)
+    return res

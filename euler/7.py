@@ -1,5 +1,9 @@
 from euler import primes
 from itertools import islice
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    104743
+    """
     print(next(islice(primes(), 10000, 10001)))

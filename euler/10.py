@@ -1,4 +1,8 @@
 from euler import primes_limit
 
-if __name__ == "__main__":
-    print(sum(primes_limit(2000000)))
+def problem():
+    """
+    >>> problem()
+    142913828922
+    """
+    return sum(primes_limit(2000000))

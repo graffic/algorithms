@@ -14,7 +14,11 @@ def factors(number, possible_factors):
     return holders
 
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    232792560
+    """
     number = 20
     primes = tuple(primes_limit(number))
     result = [0] * len(primes)

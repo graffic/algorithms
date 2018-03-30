@@ -8,7 +8,11 @@ def num_divisors(factors):
     return res
 
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    12375 th is 76576500
+    """
     limit = 20000
     primes = tuple(primes_limit(limit))
     amount_prev = 1

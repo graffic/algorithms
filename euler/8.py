@@ -11,7 +11,11 @@ def multiply(numbers):
         res *= number
     return res
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    40824
+    """
     digits = ('73167176531330624919225119674426574742355349194934'
         '96983520312774506326239578318016984801869478851843'
         '85861560789112949495459501737958331952853208805511'
@@ -37,4 +41,4 @@ if __name__ == "__main__":
         result = multiply(group)
         if result > biggest:
             biggest = result
-    print(biggest)
+    return biggest

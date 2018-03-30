@@ -1,3 +1,5 @@
+from os.path import dirname, join
+
 def load_grid(filename):
     grid = []
     with open(filename, 'r') as infile:
@@ -41,8 +43,12 @@ def split_tuples(num, grid):
             y += 1
 
 
-if __name__ == "__main__":
-    grid = load_grid('11.grid')
+def problem():
+    """
+    >>> problem()
+    70600674
+    """
+    grid = load_grid(join(dirname(__file__), '11.grid'))
     biggest = 0
     for pack in split_tuples(4, grid):
         res = 1

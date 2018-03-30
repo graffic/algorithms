@@ -14,10 +14,14 @@ c > b
 # c = (-a^2+1000 a-500000)/(a-1000)
 """
 
-if __name__ == "__main__":
+def problem():
+    """
+    >>> problem()
+    31875000
+    """
     for a in range(1, 293):
         b = (1000*(a-500))//(a-1000)
         c = (-(a*a)+1000*a-500000)//(a-1000)
         if (a + b + c) == 1000:
             break
-    print(a * b * c)
+    return a * b * c
