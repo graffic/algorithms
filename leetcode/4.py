@@ -1,8 +1,8 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 from math import ceil
 
 
-class Solution(object):
+class Solution:
     def median(self, nums):
         length = len(nums)
         middle = length//2
@@ -15,14 +15,14 @@ class Solution(object):
         length = len(nums)
 
         if length%2 == 1:
-            index = length/2
+            index = length//2
             if element <= nums[index-1]:
                 return (nums[index-1] + nums[index]) / 2.0
             if element >= nums[index+1]:
                 return (nums[index+1] + nums[index]) / 2.0
             return (element + nums[index]) / 2.0
         else:
-            index_max = length/2
+            index_max = length//2
             index_min = index_max - 1
             if element <= nums[index_min]:
                 return nums[index_min]
@@ -45,6 +45,10 @@ class Solution(object):
         :type nums1: List[int]
         :type nums2: List[int]
         :rtype: float
+
+        >>> solution = Solution()
+        >>> solution.findMedianSortedArrays([1, 3], [2])
+        2
         """
         while True:
             len1 = len(nums1)
@@ -83,7 +87,3 @@ class Solution(object):
             else:
                 nums1 = nums1[0:-step]
                 nums2 = nums2[step:]
-
-if __name__ == "__main__":
-    solution = Solution()
-    assert solution.findMedianSortedArrays([1, 3], [2]) == 2

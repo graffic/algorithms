@@ -9,21 +9,30 @@ class Solution(object):
         """
         :type s: str
         :rtype: bool
+
+        >>> sol = Solution()
+        >>> sol.isNumber("0")
+        True
+        >>> sol.isNumber(" 0.1 ")
+        True
+        >>> sol.isNumber("abc")
+        False
+        >>> sol.isNumber("1 a")
+        False
+        >>> sol.isNumber("2e10")
+        True
+        >>> sol.isNumber("3.")
+        True
+        >>> sol.isNumber(".")
+        False
+        >>> sol.isNumber(" ")
+        False
+        >>> sol.isNumber("e9")
+        False
+        >>> sol.isNumber(".1")
+        True
         """
         s = s.strip()
         if len(s) == 0:
             return False
         return self.__matcher.match(s) is not None
-
-if __name__ == "__main__":
-    sol = Solution()
-    assert sol.isNumber("0")
-    assert sol.isNumber(" 0.1 ")
-    assert not sol.isNumber("abc")
-    assert not sol.isNumber("1 a")
-    assert sol.isNumber("2e10")
-    assert sol.isNumber("3.")
-    assert not sol.isNumber(".")
-    assert not sol.isNumber(" ")
-    assert not sol.isNumber("e9")
-    assert sol.isNumber(".1")
