@@ -40,9 +40,9 @@ def build_table(pattern):
 
 def search(string, pattern):
     """
-    >>> search("abcdefghi", "cde")
+    >>> search("cdcdefghi", "cde")
     2
-    >>> search("abcdefghi", "potato")
+    >>> search("abdefghi", "potato")
     -1
     >>> search("abcdefghi", "i")
     8
