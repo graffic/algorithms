@@ -1,5 +1,5 @@
 from itertools import takewhile
-from .euler import primes_limit
+from euler import primes_limit
 
 def factors(number, possible_factors):
     holders = []

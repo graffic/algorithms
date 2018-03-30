@@ -1,7 +1,7 @@
 from itertools import takewhile
 from math import sqrt
 
-from .euler import primes
+from euler import primes
 
 
 def problem():
