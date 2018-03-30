@@ -29,7 +29,3 @@ def urlify(source):
         read -= 1
 
     return ''.join(source)
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

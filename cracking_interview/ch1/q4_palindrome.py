@@ -31,6 +31,3 @@ def is_pp2(string):
         odd ^= 1 << item
     return bin(odd).count("1") < 2
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

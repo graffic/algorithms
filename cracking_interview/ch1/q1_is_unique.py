@@ -49,7 +49,3 @@ def is_unique_3(string):
             return False
         prev = char
     return True
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

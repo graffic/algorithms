@@ -10,6 +10,8 @@ def check(one, other):
     True
     >>> check("abc", "bcd")
     False
+    >>> check("a", "bc")
+    False
     """
     if len(one) == len(other):
         return sorted(one) == sorted(other)
@@ -34,6 +36,8 @@ def check2(one, other):
 
     >>> check2("abcda", "aadcb")
     True
+    >>> check2("abc", "abd")
+    False
     >>> check2("abc", "bc")
     False
     """
@@ -48,8 +52,3 @@ def check2(one, other):
         if res_one[i] != res_other[i]:
             return False
     return True
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
