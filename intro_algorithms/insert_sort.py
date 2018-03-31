@@ -2,6 +2,12 @@ import sys
 
 
 def insert_sort(items):
+    """
+    >>> insert_sort(['a'])
+    ['a']
+    >>> insert_sort(list("dcab"))
+    ['a', 'b', 'c', 'd']
+    """
     length = len(items)
     if length < 2:
         return items
@@ -14,7 +20,3 @@ def insert_sort(items):
             k -= 1
         items[k + 1] = key
     return items
-
-
-if __name__ == "__main__":
-    print(insert_sort([int(x) for x in sys.argv[1:]]))

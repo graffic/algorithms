@@ -71,5 +71,4 @@ def recursive_merge_sort(items, p, r):
 
 if __name__ == "__main__":
     import sys
-
     print(merge_sort([int(x) for x in sys.argv[1:]]))

@@ -10,6 +10,12 @@ import sys
 
 
 def selection_sort(items):
+    """
+    >>> selection_sort(['a'])
+    ['a']
+    >>> selection_sort(list("dcba"))
+    ['a', 'b', 'c', 'd']
+    """
     length = len(items)
     if length < 2:
         return items
