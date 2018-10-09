@@ -22,7 +22,7 @@ All files are scripts `.exs`. Run the tests with `elixir path/to/file`
 
 Use Python 3.6. And run doctests with `python -m doctest path/to/file`
 
-You can also create a virtual environment and use `pytest` to run all the tests from the root directory.
+You can also create a virtual environment and use `pytest` and `pytest-cov` to run all the tests from the root directory.
 
 ## Javascript
 
